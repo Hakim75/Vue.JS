@@ -33,7 +33,7 @@
                     <!-- v-for directive permettant de boucler -->
                     <p class="jumbotron"> {{produit}} </p>
                     <button v-on:click="commander(produit)"> Commander</button>
-                    <!-- v-on et quelque chose permet de declencher une action ici on click. -->
+                    <!-- v-on  permet de declencher une action ici on click. -->
                 </div>
 
 
@@ -44,7 +44,7 @@
     <script>  // une nouvelle instance de Vue se creer à l'intérieur du balise script.
 
         var app = new Vue({ // on y passe un premier paremetre "el"
-            el: "#app",           // el pour element permet de cibler la balise qui contiendra Vue. 
+            el: "#app",           // el pour element permet de cibler la balise qui contiendra l'instance. 
             data: {
                 user: "Hakim",
                 produits: ["Pizza", "Hamburger", "Tartiflette", "Tacos"],
