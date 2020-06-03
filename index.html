@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Mcdo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- ici je référence le user du data -->
+        <div class="container">
+            <div class="row">
+                <p class="jumbotron"> Login: <input type="text" v-model="user"> Vous êtes connécté en tant que {{user}}
+                </p>
+                <h1 v-bind:class="affichage" v-if="commandes.length > 0"> Produits Commandés :</h1>
+                <ul>
+                    <li v-for="commande in commandes"> {{commande}}</li>
+
+
+                </ul>
+                <!-- v-model : atrribut qui permet de "synchroniser" la balise input avec mon état ( dans le data) -->
+            </div>
+            <h1 class="display-4"> Produits disponibles </h1>
+            <div class="row">
+                <div class="col-3" v-for="produit in produits">
+                    <!-- v-for directive permettant de boucler -->
+                    <p class="jumbotron"> {{produit}} </p>
+                    <button v-on:click="commander(produit)"> Commander</button>
+                    <!-- v-on et quelque chose permet de declencher une action ici on click. -->
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>  // une nouvelle instance de Vue se creer à l'intérieur du balise script.
+
+        var app = new Vue({ // on y passe un premier paremetre "el"
+            el: "#app",           // el pour element permet de cibler la balise qui contiendra Vue. 
+            data: {
+                user: "Hakim",
+                produits: ["Pizza", "Hamburger", "Tartiflette", "Tacos"],
+                commandes: [],
+                affichage: "display-4"
+            },
+            methods: {
+                commander: function (produit) {
+
+                    this.commandes.push(produit);
+
+                }
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
